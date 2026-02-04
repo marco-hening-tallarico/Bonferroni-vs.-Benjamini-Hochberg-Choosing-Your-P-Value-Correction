@@ -1,48 +1,93 @@
-Publications
-These are all my publications in chronological order. There are articles on pricing weather derivatives, reinforcement learning trading agents, loss terms in artificial intelligence, data leakage, combinatorial categorical grammar, 
-natural language processing, NASA’s climate data, physics-informed deep learning, stochastic differential equations, the Ornstein-Uhlenbeck process, p-value corrections, and detecting new super-heavy elements.
+# Bonferroni vs. Benjamini–Hochberg: Choosing Your P-Value Correction
 
-References:
-Tallarico, M. H. (2025, December 24). Bonferroni vs. Benjamini-Hochberg: Choosing Your P-Value Correction: The time α = 10⁻⁹⁹ was too big: Superheavy elements and deceit. Towards Data Science. 
-https://towardsdatascience.com/the-time-10-99-was-too-big-superheavy-elements-and-deceit/
-https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uCZbo_kAAAAJ&citation_for_view=uCZbo_kAAAAJ:W7OEmFMy1HYC
+## Overview
+This repository contains an interactive Jupyter Notebook that explores two common multiple-testing correction methods — the Bonferroni correction and the Benjamini–Hochberg (BH) procedure — and shows when each approach is appropriate. It provides intuition, examples, visualizations, and runnable code to compare family-wise error control (Bonferroni) vs. false discovery rate control (BH).
 
-Tallarico, M. H. (2025, September 3). Stochastic differential equations and temperature — NASA climate data pt. 2: The Ornstein–Uhlenbeck process in Python. Towards Data Science. 
-https://towardsdatascience.com/stochastic-differential-equations-and-temperature-nasa-climate-data-pt-2/
-https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uCZbo_kAAAAJ&citation_for_view=uCZbo_kAAAAJ:Y0pCki6q_DkC
+## Contents
+- `Bonferroni_vs_BH.ipynb` — Main Jupyter Notebook with:
+  - conceptual explanation of both corrections
+  - simulated examples comparing Type I/II error tradeoffs
+  - visualizations of adjusted p-values and discoveries
+  - guidance on choosing a correction for different analysis goals
 
-Tallarico, M. H. (2025, July 29). Physics-informed neural networks for inverse PDE problems: Solving the heat equation using DeepXDE. Towards Data Science. Link. Google Scholar.
-https://towardsdatascience.com/physics-informed-neural-networks-for-inverse-pde-problems/
-https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uCZbo_kAAAAJ&citation_for_view=uCZbo_kAAAAJ:d1gkVwhDpl0C
+(If your notebook filename differs, rename the reference above or update the file.)
 
-Tallarico, M. H. (2025, July 1). How to access NASA’s climate data — and how it’s powering the fight against climate change pt. 1: From architectural design to food security. Towards Data Science.
-https://towardsdatascience.com/how-to-access-nasas-climate-data-and-how-its-powering-the-fight-against-climate-change-pt-1/
-https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uCZbo_kAAAAJ&citation_for_view=uCZbo_kAAAAJ:Tyk-4Ss8FVUC
+## Background / Motivation
+When performing multiple hypothesis tests, using raw p-values leads to inflated error rates. Two commonly used approaches:
+- Bonferroni correction: controls the family-wise error rate (FWER) by making the test more conservative (reduces false positives at the cost of power).
+- Benjamini–Hochberg (BH) procedure: controls the false discovery rate (FDR), allowing more discoveries while controlling the expected proportion of false discoveries.
 
-Tallarico, M. H. (2025, June 2). Grammar as an injectable: A Trojan horse to NLP: How machines make sense of sentence structure: Combinatory Categorial Grammar. Towards Data Science. Link. Google Scholar.
-https://towardsdatascience.com/grammar-as-a-trojan-horse-to-nlp-and-computer-science/
-https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uCZbo_kAAAAJ&citation_for_view=uCZbo_kAAAAJ:zYLM7Y9cAGgC
+This notebook demonstrates the practical differences and helps users choose an appropriate correction depending on the scientific question and tolerance for false positives.
 
+## Requirements
+This repository was developed using a typical scientific Python stack. Suggested environment:
+- Python 3.8+
+- Jupyter (Notebook or Lab)
+- numpy
+- pandas
+- scipy
+- statsmodels (for `multipletests`)
+- matplotlib / seaborn
 
-Tallarico, M. H. (2025, May 12). Will you spot the leaks? A data science challenge: When models fly too high: A perilous journey through data leakage. Towards Data Science. Link. Google Scholar.
-https://towardsdatascience.com/will-you-spot-the-leaks-a-data-science-challenge/
-https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uCZbo_kAAAAJ&citation_for_view=uCZbo_kAAAAJ:IjCSPb-OGe4C
+You can install common dependencies with:
+```bash
+python -m venv venv
+source venv/bin/activate    # or `.\venv\Scripts\activate` on Windows
+pip install --upgrade pip
+pip install jupyter numpy pandas scipy statsmodels matplotlib seaborn
+```
+Or create a `requirements.txt` and run:
+```bash
+pip install -r requirements.txt
+```
 
-Tallarico, M. H. (2025, May 2). From a point to L∞: How AI uses distance: Artificial Intelligence and loss terms.Towards Data Science.
-https://towardsdatascience.com/from-a-point-to-l%e2%88%9e/
-https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uCZbo_kAAAAJ&citation_for_view=uCZbo_kAAAAJ:qjMakFHDy7sC
+## How to run
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/marco-hening-tallarico/Bonferroni-vs.-Benjamini-Hochberg-Choosing-Your-P-Value-Correction.git
+   cd Bonferroni-vs.-Benjamini-Hochberg-Choosing-Your-P-Value-Correction
+   ```
 
-Tallarico, M. H. (2025). Storm or signal: A trading agent showdown: Using Reinforcement Learning to Test Whether Weather Holds an Edge. AI Advances. Link. Google Scholar.
-https://ai.gopubby.com/storm-or-signal-a-trading-agent-showdown-5f3d662b2cef
-https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uCZbo_kAAAAJ&citation_for_view=uCZbo_kAAAAJ:UeHWp8X0CEIC
+2. Start Jupyter and open the notebook:
+   ```bash
+   jupyter notebook Bonferroni_vs_BH.ipynb
+   ```
+   or start Jupyter Lab:
+   ```bash
+   jupyter lab
+   ```
 
-Tallarico, M. H., & Olivares, P. (2024). Neural and Time-Series Approaches for Pricing Weather Derivatives: Performance and Regime Adaptation Using Satellite Data. arXiv. Link. Google Scholar.
-https://arxiv.org/abs/2411.12013
-https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uCZbo_kAAAAJ&citation_for_view=uCZbo_kAAAAJ:eQOLeE2rZwMC
+3. (Optional) Open directly in Google Colab:
+   - Use the Colab open URL pattern:
+     `https://colab.research.google.com/github/<owner>/<repo>/blob/main/<notebook>.ipynb`
+   - Example:
+     `https://colab.research.google.com/github/marco-hening-tallarico/Bonferroni-vs.-Benjamini-Hochberg-Choosing-Your-P-Value-Correction/blob/main/Bonferroni_vs_BH.ipynb`
+   - Replace `<notebook>.ipynb` with the actual notebook name if different.
 
-Tallarico, M. H., & Olivares, P. (2024). Pricing Weather Derivatives: A Time Series Neural Network Approach. Preprint. Link. Google Scholar.
-https://arxiv.org/abs/2411.12013v1
-https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uCZbo_kAAAAJ&citation_for_view=uCZbo_kAAAAJ:eQOLeE2rZwMC
+## What you'll learn
+- How Bonferroni and BH adjust p-values or thresholds
+- Practical consequences for Type I error, power, and the number of discoveries
+- Example workflows for exploratory vs. confirmatory analyses
+- How to implement corrections using Python (`statsmodels.stats.multitest.multipletests`)
 
-Tallarico, M. H. (2023). Modelling and forecasting temperature in Toronto using time-series and machine-learning methods. Academia.edu.
-https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uCZbo_kAAAAJ&citation_for_view=uCZbo_kAAAAJ:eQOLeE2rZwMC
+## References
+- Benjamini, Y. & Hochberg, Y. (1995). Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing. Journal of the Royal Statistical Society B.
+- Standard statistics texts and statsmodels documentation for `multipletests`.
+
+## Contributing
+Contributions, suggestions, and bug reports are welcome. If you add new notebooks, data, or examples, please:
+- Open an issue describing the change
+- Submit a pull request with a clear description of the addition
+
+## License
+If you intend this work to be shared under a specific license, add a `LICENSE` file in the repository. If none is present, consider adding an open license (e.g., MIT, CC BY) so others know how they may reuse the material.
+
+## Contact
+Maintainer: Marco Hening Tallarico — (GitHub: [marco-hening-tallarico](https://github.com/marco-hening-tallarico))
+
+---
+If you’d like, I can:
+- adjust the README to reference the exact notebook filename(s) in the repo,
+- add a requirements.txt based on the notebook's imports,
+- or generate a short usage demo (GIF or static images) for the README.
+```
